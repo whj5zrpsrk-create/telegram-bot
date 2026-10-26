@@ -104,29 +104,18 @@ async def process_premium(callback: types.CallbackQuery):
     await callback.answer("💎 Premium tez orada ishga tushadi!", show_alert=True)
 
 
-# --- 5. KANALGA YANGI POST TASHLANGANDA AVTO-SAQLASH ---
-@dp.channel_post()
-async def channel_post_handler(message: types.Message):
-    if message.video and message.caption:
-        code = message.caption.strip()
-        file_id = message.video.file_id
-        save_movie(code, file_id)
-        logging.info(f"Yangi kino bazaga saqlandi -> Kod: {code}")
-
-
-# --- 6. ESKI KINOLARNI BOTGA FORWARD QILIB SAQLASH YOKI KOD ORQALI QIDIRISH ---@dp.message()
+# --- 5. XABARLAR VA KINO QIDIRISH ---
+@dp.message()
 async def message_handler(message: types.Message):
     user_id = message.from_user.id
     
-    # Agar foydalanuvchi (admin sifatida) yopiq kanaldan videoni botga forward qilsa
+    # Agar siz (admin) videoni kod (caption) bilan botga yuborsangiz, u bazaga saqlanadi
     if message.video and message.caption:
         code = message.caption.strip()
         file_id = message.video.file_id
         save_movie(code, file_id)
-        await message.answer(f"✅ Eski kino bazaga qo'shildi! Kod: {code}")
-        return
-
-    # Obunani tekshirish
+        await message.answer(f"✅ Kino bazaga muvaffaqiyatli qo'shildi! Kodi: {code}")
+        return# Obunani tekshirish
     is_subscribed = await check_subscription(user_id)
     if not is_subscribed:
         await message.answer(
@@ -135,7 +124,7 @@ async def message_handler(message: types.Message):
         )
         return
     
-    # Kod bo'yicha kinoni qidirish
+    # Matn (kino kodi) kelganini tekshirish
     if not message.text:
         await message.answer("❌ Iltimos, kino kodini raqam ko'rinishida yuboring (masalan: 1):")
         return
@@ -158,7 +147,7 @@ async def message_handler(message: types.Message):
         )
 
 
-# --- 7. BOTNI ISHGA TUSHIRISH ---
+# --- 6. BOTNI ISHGA TUSHIRISH ---
 import asyncio
 
 async def main():
