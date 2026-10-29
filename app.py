@@ -14,4 +14,4 @@ def run_web():
 
 threading.Thread(target=run_web, daemon=True).start()
 
-subprocess.run(["python", "bot.py"])
+subprocess.run(["python3", "bot.py"])
