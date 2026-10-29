@@ -54,7 +54,7 @@ def get_movie_from_sheet(code: str):
 async def check_subscription(user_id: int) -> bool:
     for channel in CHANNELS:
         try:
-            member = await bot.get_chat_member(chat_id=channel["username"], user_id=user_id)
+            member = await bot.get_chat_member(chat_id=channel["id"], user_id=user_id)
             if member.status not in ["creator", "administrator", "member"]:
                 return False
         except TelegramBadRequest:
