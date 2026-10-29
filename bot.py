@@ -10,9 +10,19 @@ BOT_TOKEN = "8882857235:AAEpU6Ikamvyb4_0O5uSXgldDJEp5AIhSX8"
 
 # 3 ta majburiy obuna kanallari
 CHANNELS = [
-    {"username": "@oneway_gr", "url": "https://t.me/oneway_gr"},
-    {"username": "@IKKINCHI_KANAL_USERNAME", "url": "https://t.me/+uqohbvcdF1k4ZWZi"},
-    {"username": "@UCHINCHI_KANAL_USERNAME", "url": "https://t.me/+nPpk9AOwIvhmYzIy"}
+ [
+    {
+        "id": -1003545290418, 
+        "url": "https://t.me/+nPpk9AOwIvhmYzIy"
+    },
+    {
+        "id": -1002373169167, 
+        "url": "https://t.me/+UWXH1a423ihkYTEy"
+    },
+    {
+        "id": -1003343553289, 
+        "url": "https://t.me/+uqohbvcdF1k4ZWZi"
+    }
 ]
 
 # Google Sheets havolasi
